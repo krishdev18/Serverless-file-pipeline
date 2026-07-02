@@ -53,7 +53,7 @@ DynamoDB file_id: 7be58e7c-d647-48ea-bdf7-2b148fe986f0
 
 ## Architecture
 
-![Architecture Diagram](screenshots/architecture.png)
+![Architecture Diagram](screenshots/Serverless-file-pipeline Architecture.jpeg)
 
 ### Why Each Service Is Here
 
@@ -76,7 +76,7 @@ Every screenshot below is from the actual working pipeline — not a mock.
 ### S3 Bucket — `file-processing-pipeline-automation-bucket`
 Two folders: `uploads/` for incoming files, `Processed/` for outputs.
 
-![S3 Bucket](screenshots/s3-bucket.png)
+![S3 Bucket](screenshots/S3-bucket.png)
 
 ---
 
@@ -84,7 +84,7 @@ Two folders: `uploads/` for incoming files, `Processed/` for outputs.
 `lambda-file-processor-role` has exactly 4 policies.  
 S3 read. DynamoDB write. SNS publish. CloudWatch logs. Nothing else.
 
-![IAM Role](screenshots/iam-role.png)
+![IAM Role](screenshots/IAM-role.png)
 
 ---
 
@@ -98,7 +98,7 @@ Partition key: `file_id` · Sort key: `timestamp` · Capacity: On-demand
 ### SNS Topic — `FileProcessingNotifications`
 Email subscription confirmed. Ready to notify on every pipeline execution.
 
-![SNS Topic](screenshots/sns-topic.png)
+![SNS Topic](screenshots/sns.png)
 
 ![SNS Confirmed](screenshots/sns-confirmed.png)
 
@@ -113,7 +113,7 @@ aws s3 cp sales_data.csv \
   --region ap-south-1
 ```
 
-![CloudWatch Logs](screenshots/cloudwatch-logs.png)
+![CloudWatch Logs](screenshots/cloud-watch-logs.png)
 
 **What the logs show:**
 - File read: 372 bytes
@@ -309,18 +309,18 @@ aws s3 cp sales_data.csv \
 ```
 serverless-file-processing-pipeline/
 │
-├── lambda_function.py        # Core Lambda handler
-├── sales_data.csv            # Sample CSV file for testing
+├── lambda_function.py                        # Core Lambda handler
+├── sales_data.csv                            # Sample CSV file for testing
 ├── README.md
 │
 └── screenshots/
-    ├── architecture.png      # System design diagram
-    ├── s3-bucket.png
-    ├── iam-role.png
+    ├── Serverless-file-pipeline Architecture.jpeg  # System design diagram
+    ├── S3-bucket.png
+    ├── IAM-role.png
     ├── dynamodb-table.png
-    ├── sns-topic.png
+    ├── sns.png
     ├── sns-confirmed.png
-    ├── cloudwatch-logs.png
+    ├── cloud-watch-logs.png
     └── email-notification.png
 ```
 
