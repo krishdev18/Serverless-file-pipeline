@@ -1,0 +1,9 @@
+OrderID,CustomerName,Product,Amount,Status
+ORD001,Arjun Kumar,Laptop,85000,Completed
+ORD002,Priya Sharma,Mouse,450,Completed
+ORD003,Ravi Patel,Keyboard,1200,Pending
+ORD004,Sneha Reddy,Monitor,15000,Completed
+ORD005,Kiran Singh,USB Hub,90,Cancelled
+ORD006,Meena Nair,Webcam,3500,Completed
+ORD007,Rohit Das,Headphones,75,Pending
+ORD008,Ananya Iyer,SSD,8500,Completed
