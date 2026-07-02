@@ -12,7 +12,6 @@
 > A fully automated, event-driven pipeline connecting 6 AWS services.  
 > One file upload triggers the entire chain — processing, storage, and email notification — in **415ms**.
 
-[View Architecture](#architecture) • [See It Working](#live-proof) • [Deploy It Yourself](#deploy)
 
 </div>
 
@@ -53,7 +52,6 @@ DynamoDB file_id: 7be58e7c-d647-48ea-bdf7-2b148fe986f0
 
 ## Architecture
 
-![Architecture Diagram](screenshots/Serverless-file-pipeline Architecture.jpeg)
 
 ### Why Each Service Is Here
 
@@ -76,7 +74,6 @@ Every screenshot below is from the actual working pipeline — not a mock.
 ### S3 Bucket — `file-processing-pipeline-automation-bucket`
 Two folders: `uploads/` for incoming files, `Processed/` for outputs.
 
-![S3 Bucket](screenshots/S3-bucket.png)
 
 ---
 
@@ -84,23 +81,16 @@ Two folders: `uploads/` for incoming files, `Processed/` for outputs.
 `lambda-file-processor-role` has exactly 4 policies.  
 S3 read. DynamoDB write. SNS publish. CloudWatch logs. Nothing else.
 
-![IAM Role](screenshots/IAM-role.png)
-
 ---
 
 ### DynamoDB Table — `ProcessedFileResults`
 Partition key: `file_id` · Sort key: `timestamp` · Capacity: On-demand
 
-![DynamoDB](screenshots/dynamodb-table.png)
 
 ---
 
 ### SNS Topic — `FileProcessingNotifications`
 Email subscription confirmed. Ready to notify on every pipeline execution.
-
-![SNS Topic](screenshots/sns.png)
-
-![SNS Confirmed](screenshots/sns-confirmed.png)
 
 ---
 
@@ -112,8 +102,6 @@ aws s3 cp sales_data.csv \
   s3://file-processing-pipeline-automation-bucket/uploads/sales_data.csv \
   --region ap-south-1
 ```
-
-![CloudWatch Logs](screenshots/cloud-watch-logs.png)
 
 **What the logs show:**
 - File read: 372 bytes
@@ -127,8 +115,6 @@ aws s3 cp sales_data.csv \
 
 ### Email Notification — Delivered by SNS
 Arrived 19 minutes after the pipeline ran (SNS delivery, not pipeline delay).
-
-![Email](screenshots/email-notification.png)
 
 ---
 
@@ -342,7 +328,7 @@ This exact pattern is used in production by:
 **Built by Hari**  
 Cloud Engineer · AWS Enthusiast · Learning in Public
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](YOUR_LINKEDIN_URL)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/hkrish18/)
 
 *If this helped you, drop a ⭐ — it keeps me building.*
 
